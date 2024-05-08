@@ -15,8 +15,8 @@ class Tienda:
     def listar_productos_farmacia(self):
         lista_productos = ""
         for producto in self.__productos:
-            nombre = producto.obtener_nombre()
-            precio = producto.obtener_precio()
+            nombre = producto.obtener_nombre
+            precio = producto.obtener_precio
             mensaje_envio_gratis = ""  # Inicializamos el mensaje vacío
             if precio >= 15000:
                 mensaje_envio_gratis = " (Envío gratis al solicitar este producto)"  # Agregamos el mensaje solo si el precio es mayor o igual a $15000
@@ -25,17 +25,17 @@ class Tienda:
     def listar_productos_restaurante(self):
         lista_productos = ""
         for producto in self.__productos:
-            nombre = producto.obtener_nombre()
-            precio = producto.obtener_precio()
+            nombre = producto.obtener_nombre
+            precio = producto.obtener_precio
             lista_productos += f"{nombre}: ${precio}\n"
         return lista_productos
     
     def listar_productos_supermercado(self):
         lista_productos = ""
         for producto in self.__productos:
-            nombre = producto.obtener_nombre()
-            precio = producto.obtener_precio()
-            stock = producto.obtener_stock()
+            nombre = producto.obtener_nombre
+            precio = producto.obtener_precio
+            stock = producto.obtener_stock
             mensaje_pocos_productos = ""  # Inicializamos el mensaje vacío
             if stock < 10:
                 mensaje_pocos_productos = " Pocos productos disponibles"  # Agregamos el mensaje solo si el stock es menor a 10
@@ -44,6 +44,7 @@ class Tienda:
 
     def realizar_venta(self, nombre_producto, cantidad):
         pass
+    @property
     def obtener_productos(self):
         return self.__productos
 class Restaurante(Tienda):

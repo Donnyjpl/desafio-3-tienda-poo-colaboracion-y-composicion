@@ -54,29 +54,29 @@ while True:
         cantidad = int(input("Ingrese la cantidad requerida: "))
 
         if isinstance(tienda, Restaurante):
-            print("Los productos del restaurante siempre tienen stock 0.")
+            print(f"Se vendio {nombre_producto}tienen stock 0.")
         elif isinstance(tienda, Farmacia):
             if cantidad > 3:
                 print("No se puede solicitar una cantidad superior a 3 por producto en cada venta.")
             else:
-                for producto in tienda.obtener_productos():
-                    if producto.obtener_nombre() == nombre_producto:
-                        stock_disponible = producto.obtener_stock()
+                for producto in tienda.obtener_productos:
+                    if producto.obtener_nombre == nombre_producto:
+                        stock_disponible = producto.obtener_stock
                         cantidad_vendida = min(cantidad, stock_disponible)
-                        producto.modificar_stock(-cantidad_vendida)
+                        producto.obtener_stock = -cantidad_vendida
                         print(f"Se vendieron {cantidad_vendida} unidades de {nombre_producto}.")
                         break
                 else:
                     print("El producto solicitado no existe en la tienda")
         elif isinstance(tienda, Supermercado):
-            for producto in tienda.obtener_productos():    
-                if producto.obtener_nombre() == nombre_producto:
-                    stock_disponible = producto.obtener_stock()
+            for producto in tienda.obtener_productos:    
+                if producto.obtener_nombre == nombre_producto:
+                    stock_disponible = producto.obtener_stock
                     if cantidad <= stock_disponible:
-                        producto.modificar_stock(-cantidad)
+                        producto.obtener_stock = -cantidad
                         print(f"Se vendieron {cantidad} unidades de {nombre_producto}.")
                     else:
-                        producto.modificar_stock(-stock_disponible)
+                        producto.obtener_stock = -stock_disponible
                         print(f"Se vendieron {stock_disponible} unidades de {nombre_producto}.")
                     break
             else:
